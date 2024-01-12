@@ -11,7 +11,6 @@
 
     // Check connection with the Database (Error Handeling if connection fails)
     if ($conn->connect_error) {
-        $DBConnectionStatus = "Connection failed: " . $conn->connect_error;
         die("Connection failed: " . $conn->connect_error);
     } else {
         $DBConnectionStatus = "Connected successfully";
