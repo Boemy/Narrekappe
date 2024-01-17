@@ -2,7 +2,7 @@
     include('Database_Config.php');
 
     // Create connection with the Database
-    $conn = new mysqli(
+    $conn = mysqli_connect(
         $DatabaseConfig["DB_Server"], 
         $DatabaseConfig["DB_Username"], 
         $DatabaseConfig["DB_Password"], 
@@ -10,8 +10,8 @@
     );
 
     // Check connection with the Database (Error Handeling if connection fails)
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
     } else {
         $DBConnectionStatus = "Connected successfully";
     }

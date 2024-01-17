@@ -1,43 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD Page</title>
+  <link rel="stylesheet" type="text/css" href="Styles/styles.css">
+  <?php include('Scripts/LoginSession.php')?>
 </head>
 <body>
 
-<h1>Database Query Check</h1>
+  <h2>Students</h2>
+  <?php
+    // Display a table of all the users
+    include('Scripts/Users/ListUsers.php');
 
-<?php
-    include('Database/DB_Connection.php');
+    // Include the pop-up content
+    include('Styles/CreateUser_popup.php');
 
-    // Display student data
-    if ($DBConnectionStatus === "Connected successfully") {
-        // Perform a SELECT query
-        $query = "SELECT id, username FROM student";
-        $result = $conn->query($query);
+    // Display a button to open the pup-up
+    echo "<button onclick='openModal_1()' style='margin: 4px;'>Create New User</button>";
+  ?>
 
-        // Check if the query was successful
-        if ($result) {
-            echo "<h2>Student Data</h2>";
-            echo "<table border='1'>";
-            echo "<tr><th>ID</th><th>Username</th></tr>";
+  <h2>Challenges</h2>
+  <?php
+    // Display a table of all the challenges
+    include('Scripts/Challenges/ListChallenges.php');
 
-            // Fetch and display the results
-            while ($row = $result->fetch_assoc()) {
-                echo "<tr><td>{$row['id']}</td><td>{$row['username']}</td></tr>";
-            }
+    // Include the pop-up content
+    include('Styles/CreateChallenge_popup.php');
 
-            echo "</table>";
-        } else {
-            echo "Error executing SELECT query: " . $conn->error;
-        }
-    }
-
-    // Close the database connection when you are done.
-    $conn->close();
-?>
-
+    // Display a button to open the pup-up
+    echo "<button onclick='openModal_2()' style='margin: 4px;'>Add New Challenge</button><button onclick='openChallengesInUseModal()' style='margin: 4px;'>Challenges In Use</button>";
+  ?>
 </body>
 </html>
+
+ 
