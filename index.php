@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRUD Page</title>
   <link rel="stylesheet" type="text/css" href="Styles/styles.css">
-  <?php include('Scripts/LoginSession.php')?>
 </head>
 <body>
+  <?php include('Scripts/LoginSession.php')  ?>
 
   <h2>Students</h2>
   <?php
-    // Display a table of all the users
+    // Display a table ofION all the users
     include('Scripts/Users/ListUsers.php');
 
     // Include the pop-up content
